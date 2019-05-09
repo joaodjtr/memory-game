@@ -2,23 +2,103 @@
     <head>
         <title>Jogo da memória</title>
         <link href="style.css" rel="stylesheet">
-        <script>
-            function opa(){
-                document.getElementById("game").style.top = 0;
-            }
-        </script>
+        <script src="script.js"></script>
+        <link rel="icon" href="assets/emojis/card-emoji.png"/>
     </head>
     <body>
         <section id="difficulty-choice">
             <h1>Jogo da memória</h1>
             <ul>
-                <a onclick="opa()" href="#"><li>Fácil</li></a>
-                <a href="#"><li>Médio</li></a>
-                <a href="#"><li>Difícil</li></a>
-            </ul> 
+                <a onclick="init(8)" href="#"><li>8 pares</li></a>
+                <a onclick="init(12)" href="#"><li>12 pares</li></a>
+                <a onclick="init(16)" href="#"><li>16 pares</li></a>
+            </ul>
+            <h3 id="made-by">Made by João Victor <img src="assets/emojis/peace-emoji.png"/></h3> 
         </section>
-        <section id="game">
 
+        <section class="game game-8">
+            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-8"/>
+            <div class="board board-8">
+                <div class="card card-8" onclick="turnCard(0, false)"></div>
+                <div class="card card-8" onclick="turnCard(1, false)"></div>
+                <div class="card card-8" onclick="turnCard(2, false)"></div>
+                <div class="card card-8" onclick="turnCard(3, false)"></div>
+                <div class="card card-8" onclick="turnCard(4, false)"></div>
+                <div class="card card-8" onclick="turnCard(5, false)"></div>
+                <div class="card card-8" onclick="turnCard(6, false)"></div>
+                <div class="card card-8" onclick="turnCard(7, false)"></div>
+            </div>
+            <button class="btn-init" id="btn-init-8" onclick="initGame()">Iniciar</button>
+            <div class="scoreboard" id="scoreboard-8">
+                <ul>
+                    <li id="nPlay-8"></li>
+                    <li id="nCorrect-8"></li>
+                    <li id="nWrong-8"></li>
+                </ul>
+            </div>
+            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
         </section>
+
+        <section class="game game-12">
+            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-12"/>
+            <div class="board board-12">
+                <div class="card card-12" onclick="turnCard(0, false)"></div>
+                <div class="card card-12" onclick="turnCard(1, false)"></div>
+                <div class="card card-12" onclick="turnCard(2, false)"></div>
+                <div class="card card-12" onclick="turnCard(3, false)"></div>
+                <div class="card card-12" onclick="turnCard(4, false)"></div>
+                <div class="card card-12" onclick="turnCard(5, false)"></div>
+                <div class="card card-12" onclick="turnCard(6, false)"></div>
+                <div class="card card-12" onclick="turnCard(7, false)"></div>
+                <div class="card card-12" onclick="turnCard(8, false)"></div>
+                <div class="card card-12" onclick="turnCard(9, false)"></div>
+                <div class="card card-12" onclick="turnCard(10, false)"></div>
+                <div class="card card-12" onclick="turnCard(11, false)"></div>
+            </div>
+            <button class="btn-init" id="btn-init-12" onclick="initGame()">Iniciar</button>
+            <div class="scoreboard" id="scoreboard-12">
+                <ul>
+                    <li id="nPlay-12"></li>
+                    <li id="nCorrect-12"></li>
+                    <li id="nWrong-12"></li>
+                </ul>
+            </div>
+            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
+        </section>
+        
+        <section class="game game-16">
+            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-16"/>
+            <div class="board board-16">
+                <div class="card card-16" onclick="turnCard(0, false)"></div>
+                <div class="card card-16" onclick="turnCard(1, false)"></div>
+                <div class="card card-16" onclick="turnCard(2, false)"></div>
+                <div class="card card-16" onclick="turnCard(3, false)"></div>
+                <div class="card card-16" onclick="turnCard(4, false)"></div>
+                <div class="card card-16" onclick="turnCard(5, false)"></div>
+                <div class="card card-16" onclick="turnCard(6, false)"></div>
+                <div class="card card-16" onclick="turnCard(7, false)"></div>
+                <div class="card card-16" onclick="turnCard(8, false)"></div>
+                <div class="card card-16" onclick="turnCard(9, false)"></div>
+                <div class="card card-16" onclick="turnCard(10, false)"></div>
+                <div class="card card-16" onclick="turnCard(11, false)"></div>
+                <div class="card card-16" onclick="turnCard(12, false)"></div>
+                <div class="card card-16" onclick="turnCard(13, false)"></div>
+                <div class="card card-16" onclick="turnCard(14, false)"></div>
+                <div class="card card-16" onclick="turnCard(15, false)"></div>
+            </div>
+            <button class="btn-init" id="btn-init-16" onclick="initGame()">Iniciar</button>
+            <div class="scoreboard" id="scoreboard-16">
+                <ul>
+                    <li id="nPlay-16"></li>
+                    <li id="nCorrect-16"></li>
+                    <li id="nWrong-16"></li>
+                </ul>
+            </div>
+            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
+        </section>
+ 
+           
+
+            
     </body>
 </html>

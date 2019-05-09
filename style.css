@@ -12,10 +12,11 @@ section#difficulty-choice{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #f3f5ff;
 }
 
 #difficulty-choice h1{
-    font-size: 2.5em;
+    font-size: 3em;
 }
 
 #difficulty-choice ul{
@@ -24,15 +25,15 @@ section#difficulty-choice{
 }
 
 #difficulty-choice ul li{
-    background: rgb(199, 218, 247);
+    background: #6666ff;
     padding: 10px 15px 10px 15px;
     margin: 25px 0;
     border-radius: 5px;
+    font-size: 1.7em;
+    font-weight: 600;
     text-align: center;
-    font-size: 1.25em;
-    font-weight: 500;
-    color: rgb(25,25,25);
-    box-shadow: 0 0 7px -2px gray;
+    color: white;
+    box-shadow: 0 0 15px -1px #afafaf;
 }
 
 #difficulty-choice ul a{
@@ -40,14 +41,131 @@ section#difficulty-choice{
     color: inherit;
 }
 
-section#game{
+h3#made-by{
+    position: absolute;
+    margin: 0;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+h3#made-by img{
+    height: 45px;
+}
+
+section.game{
     height: 100%;
     width: 100%;
-    background: rgb(255, 190, 190);
+    background: #f3f5ff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 100%;
     transition: .5s;
+}
+
+.win-game{
+    transform: scale(0, 0);
+    transition: 1s;
+}
+
+.btn-init{
+    font-size: 1.25em;
+    font-weight: 700;
+    margin: 30px 0;
+    padding: 10px 15px 10px 15px;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 0px #afafaf;
+    color: white;
+    background: #6666ff;
+    transition: .25s;
+}
+
+img#close-btn{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.board{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 20px 10px 0 10px;
+    background: #a0a0ff;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border-radius: 3px;
+    box-shadow: 0 0 10px -1px #afafaf;
+}
+
+.scoreboard{
+    padding: 15px 30px 15px 30px;
+    position: absolute;
+    bottom: -150px;
+    left: calc(50% - );
+    transition: .25s;
+    border-radius: 7px;
+    box-shadow: 0 -1px 10px -2px #afafaf;
+    background: #ffffff;
+}
+
+.scoreboard ul{
+    list-style: none;
+    padding: 0;
+    font-size: 1.25em;
+}
+
+.scoreboard ul b{
+    color: blue;
+}
+
+.scoreboard ul b:first-child{
+    color: green;
+}
+
+.correctP{
+    box-shadow: none;
+    transition: .5s;
+}
+
+.shakeW{
+    animation: shakeW 1s;
+}
+
+@keyframes shakeW{
+    from,
+    to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate3d(-2.5px, 0, 0);
+        transform: translate3d(-2.5px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate3d(2.5px, 0, 0);
+        transform: translate3d(2.5px, 0, 0);
+    }
 }
