@@ -41,16 +41,20 @@ section#difficulty-choice{
     color: inherit;
 }
 
-h3#made-by{
+#made-by{
     position: absolute;
     margin: 0;
     bottom: 15px;
     right: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
 }
 
-h3#made-by img{
+#made-by img{
     height: 45px;
 }
 
