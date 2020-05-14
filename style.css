@@ -118,6 +118,42 @@ section#home .game{
     align-self: flex-end;
 }
 
+.game .board{
+    height: 100%;
+    width: 100%;
+    padding: 20px 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.game .board.board-8{
+    grid-template-columns: repeat(4, 150px);
+    /* grid-template-rows: repeat(2, 225px); */
+    grid-auto-rows: 225px;
+    gap: 20px;
+}
+
+.game .board.board-16{
+    grid-template-columns: repeat(8, 125px);
+    grid-auto-rows: 200px;
+    gap: 20px;
+}
+
+.game .board.board-32{
+    grid-template-columns: repeat(8, 100px);
+    grid-auto-rows: 125px;
+    gap: 10px;
+}
+
+.game .board .card{
+    height: 100%;
+    width: 100%;
+    background: var(--primary-color);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
 section#home main.game--fadeIn{
     display: flex !important;
     opacity: 0;
