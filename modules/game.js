@@ -1,23 +1,22 @@
 "use strict"
-
 import {fadeIn, fadeOut} from './helper.js'
+import {drawCard, flipCard} from './card.js'
 
 let board
 let cards = []
 
 export function drawGame(numberCards, target){
-
     board = document.createElement('DIV')
     board.classList.add('board', `board-${numberCards}`)
-    target.appendChild(board)
 
     for(let i = 0; i < numberCards; i++){
-        let card = document.createElement('DIV')
-        card.classList.add('card')
+        const card = drawCard(i)
+        card.addEventListener("click", () => flipCard(cards[i]))
         board.appendChild(card)
         cards.push(card)
     }
 
+    target.appendChild(board)
     fadeIn(target)
 }
 
