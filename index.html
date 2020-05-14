@@ -1,104 +1,40 @@
-<html lang="pt">
+<!DOCTYPE html>
+<html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Language" content="pt-br">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="style.css" rel="stylesheet"/>
         <title>Jogo da memória</title>
-        <link href="style.css" rel="stylesheet">
-        <script src="script.js"></script>
-        <link rel="icon" href="assets/emojis/card-emoji.png"/>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <section id="difficulty-choice">
-            <h1>Jogo da memória</h1>
-            <ul>
-                <a onclick="init(8)" href="#"><li>8 pares</li></a>
-                <a onclick="init(12)" href="#"><li>12 pares</li></a>
-                <a onclick="init(16)" href="#"><li>16 pares</li></a>
-            </ul>
-            <a href="https://github.com/joaodjtr" target="_blank" id="made-by">Made by João Victor <img src="assets/emojis/peace-emoji.png"/></a> 
-        </section>
-
-        <section class="game game-8">
-            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-8"/>
-            <div class="board board-8">
-                <div class="card card-8" onclick="turnCard(0, false)"></div>
-                <div class="card card-8" onclick="turnCard(1, false)"></div>
-                <div class="card card-8" onclick="turnCard(2, false)"></div>
-                <div class="card card-8" onclick="turnCard(3, false)"></div>
-                <div class="card card-8" onclick="turnCard(4, false)"></div>
-                <div class="card card-8" onclick="turnCard(5, false)"></div>
-                <div class="card card-8" onclick="turnCard(6, false)"></div>
-                <div class="card card-8" onclick="turnCard(7, false)"></div>
-            </div>
-            <button class="btn-init" id="btn-init-8" onclick="initGame()">Iniciar</button>
-            <div class="scoreboard" id="scoreboard-8">
-                <ul>
-                    <li id="nPlay-8"></li>
-                    <li id="nCorrect-8"></li>
-                    <li id="nWrong-8"></li>
-                </ul>
-            </div>
-            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
-        </section>
-
-        <section class="game game-12">
-            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-12"/>
-            <div class="board board-12">
-                <div class="card card-12" onclick="turnCard(0, false)"></div>
-                <div class="card card-12" onclick="turnCard(1, false)"></div>
-                <div class="card card-12" onclick="turnCard(2, false)"></div>
-                <div class="card card-12" onclick="turnCard(3, false)"></div>
-                <div class="card card-12" onclick="turnCard(4, false)"></div>
-                <div class="card card-12" onclick="turnCard(5, false)"></div>
-                <div class="card card-12" onclick="turnCard(6, false)"></div>
-                <div class="card card-12" onclick="turnCard(7, false)"></div>
-                <div class="card card-12" onclick="turnCard(8, false)"></div>
-                <div class="card card-12" onclick="turnCard(9, false)"></div>
-                <div class="card card-12" onclick="turnCard(10, false)"></div>
-                <div class="card card-12" onclick="turnCard(11, false)"></div>
-            </div>
-            <button class="btn-init" id="btn-init-12" onclick="initGame()">Iniciar</button>
-            <div class="scoreboard" id="scoreboard-12">
-                <ul>
-                    <li id="nPlay-12"></li>
-                    <li id="nCorrect-12"></li>
-                    <li id="nWrong-12"></li>
-                </ul>
-            </div>
-            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
-        </section>
-        
-        <section class="game game-16">
-            <img src="assets/emojis/party-emoji.png" class="win-game" id="win-game-16"/>
-            <div class="board board-16">
-                <div class="card card-16" onclick="turnCard(0, false)"></div>
-                <div class="card card-16" onclick="turnCard(1, false)"></div>
-                <div class="card card-16" onclick="turnCard(2, false)"></div>
-                <div class="card card-16" onclick="turnCard(3, false)"></div>
-                <div class="card card-16" onclick="turnCard(4, false)"></div>
-                <div class="card card-16" onclick="turnCard(5, false)"></div>
-                <div class="card card-16" onclick="turnCard(6, false)"></div>
-                <div class="card card-16" onclick="turnCard(7, false)"></div>
-                <div class="card card-16" onclick="turnCard(8, false)"></div>
-                <div class="card card-16" onclick="turnCard(9, false)"></div>
-                <div class="card card-16" onclick="turnCard(10, false)"></div>
-                <div class="card card-16" onclick="turnCard(11, false)"></div>
-                <div class="card card-16" onclick="turnCard(12, false)"></div>
-                <div class="card card-16" onclick="turnCard(13, false)"></div>
-                <div class="card card-16" onclick="turnCard(14, false)"></div>
-                <div class="card card-16" onclick="turnCard(15, false)"></div>
-            </div>
-            <button class="btn-init" id="btn-init-16" onclick="initGame()">Iniciar</button>
-            <div class="scoreboard" id="scoreboard-16">
-                <ul>
-                    <li id="nPlay-16"></li>
-                    <li id="nCorrect-16"></li>
-                    <li id="nWrong-16"></li>
-                </ul>
-            </div>
-            <img onclick="closeGame()" id="close-btn" src="assets/close.svg"/>
-        </section>
- 
-           
-
+        <script type="module">
+            import {drawGame, endGame} from './modules/game.js'
             
+            window.initGame = (numberCards) => {
+                drawGame(numberCards, document.getElementsByClassName("game")[0])
+            }
+
+            window.endGame = () => {
+                endGame(document.getElementsByClassName("game")[0])
+            }
+
+        </script>
+        <section id="home">
+            <h3 class="home__title">Jogo da Memória 🃏</h3>
+            <ul class="home__game-list">
+                <li onclick="initGame(8)">8 cartas</li>
+                <li onclick="initGame(16)">16 cartas</li>
+                <li onclick="initGame(32)">32 cartas</li>
+                <li onclick="initGame(64)">64 cartas</li>
+            </ul>
+            <main class="game">
+                <i onclick="endGame()" class="material-icons md-48">close</i>
+            </main>
+        </section>
     </body>
 </html>

@@ -1,175 +1,143 @@
-body{
-    font-family: Airbnb Cereal App;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;    
+@font-face{
+    font-family: "Airbnb Cereal";
+    src: url('assets/fonts/AirbnbCereal-Medium.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-section#difficulty-choice{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #f3f5ff;
+@font-face{
+    font-family: "Airbnb Cereal";
+    src: url('assets/fonts/AirbnbCereal-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
 }
 
-#difficulty-choice h1{
-    font-size: 3em;
-}
-
-#difficulty-choice ul{
-    padding: 0;
-    list-style: none;
-}
-
-#difficulty-choice ul li{
-    background: #6666ff;
-    padding: 10px 15px 10px 15px;
-    margin: 25px 0;
-    border-radius: 5px;
-    font-size: 1.7em;
-    font-weight: 600;
-    text-align: center;
-    color: white;
-    box-shadow: 0 0 15px -1px #afafaf;
-}
-
-#difficulty-choice ul a{
-    text-decoration: none;
-    color: inherit;
-}
-
-#made-by{
-    position: absolute;
-    margin: 0;
-    bottom: 15px;
-    right: 15px;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-}
-
-#made-by img{
-    height: 45px;
-}
-
-section.game{
-    height: 100%;
-    width: 100%;
-    background: #f3f5ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 100%;
-    transition: .5s;
-}
-
-.win-game{
-    transform: scale(0, 0);
-    transition: 1s;
-}
-
-.btn-init{
-    font-size: 1.25em;
+@font-face{
+    font-family: "Airbnb Cereal";
+    src: url('assets/fonts/AirbnbCereal-Bold.ttf') format("truetype");
     font-weight: 700;
-    margin: 30px 0;
-    padding: 10px 15px 10px 15px;
-    border: 0;
-    border-radius: 3px;
-    box-shadow: 0 0 15px 0px #afafaf;
-    color: white;
-    background: #6666ff;
-    transition: .25s;
+    font-style: normal;
 }
 
-img#close-btn{
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    cursor: pointer;
+@font-face{
+    font-family: "Airbnb Cereal";
+    src: url('assets/fonts/AirbnbCereal-Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
 }
 
-.board{
-    padding: 0;
+@font-face{
+    font-family: "Airbnb Cereal";
+    src: url('assets/fonts/AirbnbCereal-ExtraBold.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+*{
     margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.card{
-    margin: 20px 10px 0 10px;
-    background: #a0a0ff;
-    background-repeat: no-repeat;
-    background-size: auto;
-    border-radius: 3px;
-    box-shadow: 0 0 10px -1px #afafaf;
-}
-
-.scoreboard{
-    padding: 15px 30px 15px 30px;
-    position: absolute;
-    bottom: -150px;
-    left: calc(50% - );
-    transition: .25s;
-    border-radius: 7px;
-    box-shadow: 0 -1px 10px -2px #afafaf;
-    background: #ffffff;
-}
-
-.scoreboard ul{
-    list-style: none;
     padding: 0;
-    font-size: 1.25em;
+    outline: 0;
+    box-sizing: border-box;
 }
 
-.scoreboard ul b{
-    color: blue;
+:root{
+    --main-bg-color: #f3f5ff;
+    --primary-color: #0779e4;
+    --timing-fade: .5s;
+    --spacing-screen: 20px 40px;
 }
 
-.scoreboard ul b:first-child{
-    color: green;
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.correctP{
-    box-shadow: none;
-    transition: .5s;
+body{
+    background: var(--main-bg-color);
+    font-family: "Airbnb Cereal", Open Sans, Arial, Helvetica, sans-serif;
 }
 
-.shakeW{
-    animation: shakeW 1s;
+section#home{
+    height: 100%;
+    width: 100%;
+    padding: var(--spacing-screen);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-@keyframes shakeW{
-    from,
-    to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+section#home .home__title{
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+section#home ul.home__game-list{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 40px;
+}
+
+section#home ul.home__game-list li{
+    margin-top: 20px;
+    padding: 8px 24px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 7px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 12px -3px rgba(0,0,0,0.3);
+}
+
+section#home ul.home__game-list li:first-child{
+    margin-top: 0;
+}
+
+section#home .game{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: var(--spacing-screen);
+    opacity: 0;
+    display: none;
+    flex-flow: column nowrap;
+    align-items: center;
+    background: var(--main-bg-color);
+}
+
+.game .material-icons{
+    font-size: 64px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+section#home main.game--fadeIn{
+    display: flex !important;
+    opacity: 0;
+    animation: fadeIn var(--timing-fade) forwards;
+}
+
+section#home main.game--fadeOut{
+    display: flex;
+    opacity: 1;
+    animation: fadeOut var(--timing-fade) forwards;
+}
+
+@keyframes fadeIn{
+    to{
+        opacity: 1;
     }
+}
 
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-        -webkit-transform: translate3d(-2.5px, 0, 0);
-        transform: translate3d(-2.5px, 0, 0);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-        -webkit-transform: translate3d(2.5px, 0, 0);
-        transform: translate3d(2.5px, 0, 0);
+@keyframes fadeOut{
+    to{
+        opacity: 0;
     }
 }
