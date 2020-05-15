@@ -29,9 +29,15 @@ function startGame(){
 export function endGame(target){
     const winBox = document.getElementsByClassName('win-box')[0]
     winBox.classList.remove('game-finished')
+
     fadeOutGame(target)
     cards.forEach(card => board.removeChild(card))
     target.removeChild(board)
+
+    const elFounds = document.getElementsByClassName('win-box__founds')[0]
+    if(elFounds) winBox.removeChild(elFounds)
+    const elMisses = document.getElementsByClassName('win-box__misses')[0]
+    if(elMisses) winBox.removeChild(elMisses)
 
     resetVariables()
 }
@@ -111,16 +117,24 @@ function checkGame(){
 }
 
 function gameWin(){
-    console.log('You win')
-    console.log({wrongs: misses, founds})
-
-    const elFounds = document.getElementsByClassName('win-box__founds')[0]
+    const elFounds = document.createElement('p')
+    elFounds.classList.add('win-box__founds')
+    const spanFounds = document.createElement('span')
+    spanFounds.append('Acertos: ')
+    elFounds.appendChild(spanFounds)
     elFounds.append(`${founds}/${founds}`)
-    const elMisses = document.getElementsByClassName('win-box__misses')[0]
+
+    const elMisses = document.createElement('p')
+    elMisses.classList.add('win-box__misses')
+    const spanMisses = document.createElement('span')   
+    spanMisses.append('Erros: ')
+    elMisses.appendChild(spanMisses)
     elMisses.append(`${misses}`)
 
     const winBox = document.getElementsByClassName('win-box')[0]
     winBox.classList.add('game-finished')
+    winBox.appendChild(elFounds)
+    winBox.appendChild(elMisses)
 
     const button = document.getElementsByClassName('win-box__reset-game')[0]
     button.value = numberCardsChoosed

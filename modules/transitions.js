@@ -23,3 +23,13 @@ export function fadeOutButton(button){
     button.classList.remove('start-button--fadeIn')
     setTimeout(() => button.style.display = 'none', timingFade)
 }
+
+export function useWaitScreen(){
+    const waitscreen =  document.getElementsByClassName('wait-screen')[0]
+    waitscreen.classList.add('fade')
+}
+
+export function removeWaitScreen(){
+    const waitscreen =  document.getElementsByClassName('wait-screen')[0]
+    waitscreen.classList.remove('fade')
+}

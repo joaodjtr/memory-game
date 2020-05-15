@@ -179,7 +179,7 @@ section#home .game{
     flex-flow: column nowrap;
     align-items: center;
     opacity: 0;
-    transition: 1s;
+    transition: .5s;
 }
 
 .game .win-box p{
@@ -188,14 +188,17 @@ section#home .game{
 }
 
 .game .win-box p.win-box__founds span{
+    order: 1;
     color: green
 }
 
 .game .win-box p.win-box__misses span{
+    order: 2;
     color: red;
 }
 
 .game .win-box button.win-box__reset-game{
+    order: 3;
     margin-top: 20px;
 }
 
@@ -296,6 +299,29 @@ section#home main.game button.start-button--fadeOut{
     display: flex;
     opacity: 1;
     animation: fadeOut var(--timing-fade) forwards;
+}
+
+.wait-screen{
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--main-bg-color);
+    opacity: 0;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.wait-screen.fade{
+    opacity: 1;
+}
+
+@keyframes fade{
+    to{
+        opacity: 0;
+    }   
 }
 
 @keyframes fadeIn{
