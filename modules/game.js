@@ -1,31 +1,58 @@
 "use strict"
-import {fadeIn, fadeOut} from './helper.js'
+import {fadeInGame, fadeOutGame, fadeInButton, fadeOutButton} from './transitions.js'
 import {drawCard, flipCard} from './card.js'
 
+let flipCardsOnStart = false
+let gameStarted = false
 let board
 let cards = []
+let numberCardsChoosed = 0
 
-export function drawGame(numberCards, target){
-    board = document.createElement('DIV')
-    board.classList.add('board', `board-${numberCards}`)
-
-    for(let i = 0; i < numberCards; i++){
-        const card = drawCard(i)
-        card.addEventListener("click", () => flipCard(cards[i]))
-        board.appendChild(card)
-        cards.push(card)
+function startGame(){
+    fadeOutButton(startButton)
+    gameStarted = true
+    
+    if(flipCardsOnStart){
+        for(let i = 0; i < numberCardsChoosed; i++){
+            flipCard(cards[i])
+            setTimeout(() => {  
+                flipCard(cards[i])
+            }, 750);
+        }
     }
 
-    target.appendChild(board)
-    fadeIn(target)
 }
 
 export function endGame(target){
-    fadeOut(target)
-
+    fadeOutGame(target)
     cards.forEach(card => board.removeChild(card))
     target.removeChild(board)
 
     cards = []
     board = null
+    gameStarted = false
+    numberCardsChoosed = 0
 }
+
+export function drawGame(numberCards, target){
+    numberCardsChoosed = numberCards
+
+    board = document.createElement('DIV')
+    board.classList.add('board', `board-${numberCards}`)
+
+    for(let i = 0; i < numberCards; i++){
+        const card = drawCard(i, numberCards)
+        card.addEventListener("click", () => {
+            gameStarted ? flipCard(cards[i]) : {}
+        })
+        board.appendChild(card)
+        cards.push(card)
+    }
+
+    target.appendChild(board)
+    fadeInGame(target)
+    fadeInButton(startButton)
+}
+
+const startButton = document.getElementById('start-button')
+startButton.addEventListener('click', startGame)

@@ -38,12 +38,15 @@
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    border: none;
+    list-style: none;
 }
 
 /* vars */
 :root{
     --main-bg-color: #f3f5ff;
     --primary-color: #0779e4;
+    --secondary-color: #ff427f;
     --timing-fade: .5s;
     --spacing-y: 40px;
     --spacing-x: 20px;
@@ -107,8 +110,8 @@ section#home ul.home__game-list li{
     border-radius: 7px;
     background: var(--primary-color);
     color: white;
-    cursor: pointer;
     box-shadow: var(--box-shadow);
+    cursor: pointer;
 }
 
 section#home ul.home__game-list li:first-child{
@@ -134,7 +137,30 @@ section#home .game{
     font-size: 64px;
     cursor: pointer;
     align-self: flex-end;
+    position: relative;
 }
+
+.game button.start-button{
+    z-index: 2;
+    background: var(--secondary-color);
+    padding: 12px 32px;
+    box-sizing: content-box;
+    border-radius: 32px;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    align-self: center;
+    margin: auto;
+    bottom: 20px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    opacity:  0;
+    display: none;
+}
+
 
 .game .board{
     height: 100%;
@@ -166,7 +192,6 @@ section#home .game{
 .game .board .card{
     height: 100%;
     width: 100%;
-    cursor: pointer;
 }
 
 .game .board .card .card-inner{
@@ -190,20 +215,21 @@ section#home .game{
     height: 100%;
     backface-visibility: hidden;
     backface-visibility: hidden;
+    border-radius: 4px;
 }
 
 .card .card-inner .card-front{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: var(--main-bg-color);
     transform: rotateY(180deg);
 }
 
 .card .card-inner .card-front img{
-    height: 80%;
-    width: 80%;
-    box-sizing: border-box;
+    height: 75px;
+    width: 75px;
+    /* object-fit: cover; */
     -webkit-user-drag: none;
 }
 
@@ -211,13 +237,15 @@ section#home .game{
     background: var(--primary-color);
 }
 
-section#home main.game--fadeIn{
+section#home main.game--fadeIn,
+section#home main.game button.start-button--fadeIn{
     display: flex !important;
     opacity: 0;
     animation: fadeIn var(--timing-fade) forwards;
 }
 
-section#home main.game--fadeOut{
+section#home main.game--fadeOut,
+section#home main.game button.start-button--fadeOut{
     display: flex;
     opacity: 1;
     animation: fadeOut var(--timing-fade) forwards;

@@ -15,7 +15,7 @@
         <script type="module">
             import {drawGame, endGame} from './modules/game.js'
             
-            window.initGame = (numberCards) => {
+            window.chooseGame = (numberCards) => {
                 drawGame(numberCards, document.getElementsByClassName("game")[0])
             }
 
@@ -27,12 +27,13 @@
         <section id="home">
             <h3 class="home__title">Jogo da Memória 🃏</h3>
             <ul class="home__game-list">
-                <li onclick="initGame(8)">8 cartas</li>
-                <li onclick="initGame(16)">16 cartas</li>
-                <li onclick="initGame(32)">32 cartas</li>
+                <li onclick="chooseGame(8)">8 cartas</li>
+                <li onclick="chooseGame(16)">16 cartas</li>
+                <li onclick="chooseGame(32)">32 cartas</li>
             </ul>
             <main class="game">
                 <i onclick="endGame()" class="material-icons md-48">close</i>
+                <button id="start-button" class="start-button">Jogar</button>
             </main>
             <a href="https://github.com/joaodjtr" target="_blank" class="home__credits">Quem fez isto? 🤔</a>
         </section>
