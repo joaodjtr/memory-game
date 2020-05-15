@@ -23,6 +23,12 @@
                 endGame(document.getElementsByClassName("game")[0])
             }
 
+            window.resetGame = numberCards => {
+                numberCards = parseInt(numberCards)
+                endGame(document.getElementsByClassName("game")[0])
+                setTimeout(() => drawGame(numberCards, document.getElementsByClassName("game")[0]), 1000)
+            }
+
         </script>
         <section id="home">
             <h3 class="home__title">Jogo da Memória 🃏</h3>
@@ -34,6 +40,11 @@
             <main class="game">
                 <i onclick="endGame()" class="material-icons md-48">close</i>
                 <button id="start-button" class="start-button">Jogar</button>
+                <div class="win-box">
+                    <p class="win-box__founds"> <span>Acertos:</span> </p>
+                    <p class="win-box__misses"> <span>Erros:</span> </p>
+                    <button class="win-box__reset-game" onclick="resetGame(this.value);">Novo jogo</button>
+                </div>
             </main>
             <a href="https://github.com/joaodjtr" target="_blank" class="home__credits">Quem fez isto? 🤔</a>
         </section>

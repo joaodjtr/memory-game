@@ -23,8 +23,12 @@ export function drawCard(index, numberCards){
 }
 
 export function flipCard(card){
-    card.classList.contains('flip-card') ? card.classList.remove('flip-card') : card.classList.add('flip-card')
-    return card
+    if(card.classList.contains('flip-card') && !card.classList.contains('card-found')){
+        card.classList.remove('flip-card')
+        return true
+    }
+    card.classList.add('flip-card')
+    return false
 }
 
 function randomizeEmojis(numberCards){
