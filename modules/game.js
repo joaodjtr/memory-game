@@ -1,8 +1,9 @@
 "use strict"
-import {fadeInGame, fadeOutGame, fadeInButton, fadeOutButton} from './transitions.js'
+import {fadeInGame, fadeOutGame, fadeInButton, fadeOutButton, useWaitScreen, removeWaitScreen} from './transitions.js'
 import {drawCard, flipCard} from './card.js'
+import {initConfetti, clearConfetti} from './confetti.js'
 
-let flipCardsOnStart = false
+let flipCardsOnStart = true
 let gameStarted = false
 let board
 let cards = []
@@ -13,13 +14,13 @@ let founds = 0
 
 function startGame(){
     fadeOutButton(startButton)
-    gameStarted = true
     
     if(flipCardsOnStart){
         for(let i = 0; i < numberCardsChoosed; i++){
             flipCard(cards[i])
             setTimeout(() => {  
                 flipCard(cards[i])
+                gameStarted = true
             }, 750);
         }
     }
@@ -38,8 +39,19 @@ export function endGame(target){
     if(elFounds) winBox.removeChild(elFounds)
     const elMisses = document.getElementsByClassName('win-box__misses')[0]
     if(elMisses) winBox.removeChild(elMisses)
-
+    
+    clearConfetti()
     resetVariables()
+}
+
+export function resetGame(numberCards){
+    numberCards = parseInt(numberCards)
+    useWaitScreen()
+    setTimeout(() => {
+        endGame(document.getElementsByClassName("game")[0])
+        drawGame(numberCards, document.getElementsByClassName("game")[0])
+        removeWaitScreen()
+    }, 1000);
 }
 
 function resetVariables(){
@@ -108,7 +120,7 @@ function checkGame(){
         setTimeout(() => {
             flipCard(card1)
             flipCard(card2)
-        }, 1000)
+        }, 500)
     }
 
     if(founds === numberCardsChoosed / 2){
@@ -138,6 +150,8 @@ function gameWin(){
 
     const button = document.getElementsByClassName('win-box__reset-game')[0]
     button.value = numberCardsChoosed
+
+    initConfetti()
 }
 
 const startButton = document.getElementById('start-button')

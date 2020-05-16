@@ -246,7 +246,7 @@ section#home .game{
     text-align: center;
     transform-style: preserve-3d;
     box-shadow: var(--box-shadow);
-    transition: transform .8s, box-shadow 2s;
+    transition: transform .5s, box-shadow 2s;
 }
 
 .game .board .card.flip-card .card-inner,
@@ -316,6 +316,15 @@ section#home main.game button.start-button--fadeOut{
 
 .wait-screen.fade{
     opacity: 1;
+}
+
+canvas.confetti{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 998;
 }
 
 @keyframes fade{
