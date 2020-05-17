@@ -5,6 +5,7 @@ import {initConfetti, clearConfetti} from './confetti.js'
 
 let flipCardsOnStart = true
 let gameStarted = false
+let gameWon = false
 let board
 let cards = []
 let numberCardsChoosed = 0
@@ -16,12 +17,13 @@ function startGame(){
     fadeOutButton(startButton)
     
     if(flipCardsOnStart){
+        const timer = numberCardsChoosed <= 8 ? 500 : numberCardsChoosed <= 16 ? 750 : 1000
         for(let i = 0; i < numberCardsChoosed; i++){
             flipCard(cards[i])
             setTimeout(() => {  
                 flipCard(cards[i])
                 gameStarted = true
-            }, 750);
+            }, timer);
         }
     }
 
@@ -40,7 +42,6 @@ export function endGame(target){
     const elMisses = document.getElementsByClassName('win-box__misses')[0]
     if(elMisses) winBox.removeChild(elMisses)
     
-    clearConfetti()
     resetVariables()
 }
 
@@ -62,6 +63,8 @@ function resetVariables(){
     activeCards = [null, null]
     misses = 0
     founds = 0
+    if(gameWon) clearConfetti()
+    gameWon = false
 }
 
 export function drawGame(numberCards, target){
@@ -152,6 +155,7 @@ function gameWin(){
     button.value = numberCardsChoosed
 
     initConfetti()
+    gameWon = true
 }
 
 const startButton = document.getElementById('start-button')

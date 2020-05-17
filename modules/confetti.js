@@ -25,7 +25,7 @@ export const initConfetti = () =>{
 
 export const clearConfetti = () => {
   if(req) cancelAnimationFrame(req)
-  if(canvas) sectionHome.removeChild(canvas)
+  if(typeof canvas === 'object') sectionHome.removeChild(canvas)
 }
 
 function loop() {

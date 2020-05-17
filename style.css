@@ -52,6 +52,9 @@
     --spacing-x: 20px;
     --spacing-screen: var(--spacing-y) var(--spacing-x);
     --box-shadow: 0 6px 12px -3px rgba(0,0,0,0.3);
+    --media-large: 960px;
+    --media-medium: 768px;
+    --media-small: 576px;
 }
 
 html, body{
@@ -85,7 +88,7 @@ section#home .home__title{
 }
 
 section#home .home__credits{
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 600;
     text-decoration: none;
     color: black;
@@ -105,7 +108,7 @@ section#home ul.home__game-list{
 section#home ul.home__game-list li{
     margin-top: 20px;
     padding: 8px 24px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-align: center;
     border-radius: 7px;
     background: var(--primary-color);
@@ -116,6 +119,23 @@ section#home ul.home__game-list li{
 
 section#home ul.home__game-list li:first-child{
     margin-top: 0;
+}
+
+@media(max-width: 960px){
+    section#home .home__credits{
+        font-size: 1.5rem;    
+    }
+    section#home ul.home__game-list li{
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 576px){
+    section#home .home__credits{
+    }
+    section#home ul.home__game-list li{
+        font-size: 2.25rem;
+    }
 }
 
 section#home .game{
@@ -129,6 +149,7 @@ section#home .game{
     opacity: 0;
     display: none;
     flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
     background: var(--main-bg-color);
 }
@@ -137,7 +158,9 @@ section#home .game{
     font-size: 64px;
     cursor: pointer;
     align-self: flex-end;
-    position: relative;
+    position: absolute;
+    z-index: 3;
+    top: calc( var(--spacing-y) / 2 );
 }
 
 .game button.start-button,
@@ -157,12 +180,11 @@ section#home .game{
 
 .game button.start-button{
     position: absolute;
-    align-self: center;
-    margin: auto;
     bottom: 20px;
     opacity:  0;
     display: none;
     z-index: 2;
+    font-size: 1.75rem;
 }
 
 .game .win-box{
@@ -208,8 +230,6 @@ section#home .game{
 }
 
 .game .board{
-    height: 100%;
-    width: 100%;
     padding: 20px 0;
     display: grid;
     justify-content: center;
@@ -223,14 +243,14 @@ section#home .game{
 }
 
 .game .board.board-16{
-    grid-template-columns: repeat(8, 125px);
-    grid-auto-rows: 200px;
+    grid-template-columns: repeat(8, 100px);
+    grid-auto-rows: 175px;
     gap: 20px;
 }
 
-.game .board.board-32{
-    grid-template-columns: repeat(8, 100px);
-    grid-auto-rows: 125px;
+.game .board.board-36{
+    grid-template-columns: repeat(12, 70px);
+    grid-auto-rows: 85px;
     gap: 10px;
 }
 
@@ -283,8 +303,94 @@ section#home .game{
     -webkit-user-drag: none;
 }
 
+.game .board.board-36 .card .card-inner .card-front img{
+    height: 55px;
+    width: 55px;
+}
+
 .card .card-inner .card-back{
     background: var(--primary-color);
+}
+
+@media(max-width: 960px){
+    .game .board.board-36{
+        grid-template-columns: repeat(6, 70px);
+        grid-auto-rows: 85px;
+    }  
+
+    .game .board.board-36 .card .card-inner .card-front img{
+        height: 60px;
+        width: 60px;
+    }
+
+    .game .board.board-16{
+        grid-template-columns: repeat(4, 100px);
+        grid-auto-rows: 125px;
+        gap: 10px;
+    }   
+    
+    .game .board.board-16 .card .card-inner .card-front img{
+        height: 65px;
+        width: 65px;
+    }
+
+    .game .board.board-8{
+        grid-template-columns: repeat(4, 120px);
+        grid-auto-rows: 195px;
+    }
+}
+
+@media(max-width: 576px){
+    .game .board.board-36{
+        grid-template-columns: repeat(6, 50px);
+        grid-auto-rows: 65px;
+    }
+
+    .game .board.board-36 .card .card-inner .card-front img{
+        height: 50px;
+        width: 50px;
+    }
+
+    .game .board.board-16{
+        grid-template-columns: repeat(4, 75px);
+        grid-auto-rows: 100px;
+        gap: 10px;
+    }
+
+    .game .board.board-16 .card .card-inner .card-front img{
+        height: 55px;
+        width: 55px;
+    }
+
+    .game .board.board-8{
+        grid-template-columns: repeat(4, 75px);
+        grid-auto-rows: 100px;
+        gap: 15px;
+    }
+
+    .game .board.board-8 .card .card-inner .card-front img{
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media(max-width: 390px){
+    .game .board.board-36{
+        grid-template-columns: repeat(4, 55px);
+        grid-auto-rows: 60px;
+    }
+
+    .game .board.board-16{
+        grid-template-columns: repeat(4, 65px);
+        grid-auto-rows: 80px;
+        gap: 10px;
+    }
+
+    .game .board.board-8{
+        grid-template-columns: repeat(2, 100px);
+        grid-auto-rows: 125px;
+        gap: 10px;
+    }
 }
 
 section#home main.game--fadeIn,

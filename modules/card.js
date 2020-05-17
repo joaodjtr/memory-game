@@ -1,4 +1,4 @@
-const emojis = ["angryface","crazyface","cryingface","laughingface","love","loveface","monkey","moon","party","peace","poop","screamingface","sunglassesface","unicorn","watch","banana"]
+const emojis = ["angryface","crazyface","cryingface","laughingface","love","loveface","monkey","moon","party","peace","poop","screamingface","sunglassesface","unicorn","watch","banana","explodingface","flame","truck","disgust","clown"]
 let savedEmojis = []
 
 export function drawCard(index, numberCards){
@@ -23,11 +23,14 @@ export function drawCard(index, numberCards){
 }
 
 export function flipCard(card){
-    if(card.classList.contains('flip-card') && !card.classList.contains('card-found')){
-        card.classList.remove('flip-card')
-        return true
+    if(card){
+        if(card.classList.contains('flip-card') && !card.classList.contains('card-found')){
+            card.classList.remove('flip-card')
+            return true
+        }
+        card.classList.add('flip-card')
+        return false
     }
-    card.classList.add('flip-card')
     return false
 }
 
