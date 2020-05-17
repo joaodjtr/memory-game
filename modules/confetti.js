@@ -12,7 +12,7 @@ function initializeCanvas(){
     ctx = canvas.getContext('2d')
     w = canvas.width = window.innerWidth
     h = canvas.height = window.innerHeight * 2
-    confsNum = Math.floor(w / 8)
+    confsNum = Math.floor(h / 3)
     confs = new Array(confsNum).fill().map(_ => new Confetti)
 }
 
