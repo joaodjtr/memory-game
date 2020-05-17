@@ -17,7 +17,7 @@ function startGame(){
     fadeOutButton(startButton)
     
     if(flipCardsOnStart){
-        const timer = numberCardsChoosed <= 8 ? 500 : numberCardsChoosed <= 16 ? 750 : 1000
+        const timer = numberCardsChoosed <= 8 ? 500 : numberCardsChoosed <= 16 ? 1000 : 1500
         for(let i = 0; i < numberCardsChoosed; i++){
             flipCard(cards[i])
             setTimeout(() => {  
