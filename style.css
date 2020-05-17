@@ -131,8 +131,6 @@ section#home ul.home__game-list li:first-child{
 }
 
 @media(max-width: 576px){
-    section#home .home__credits{
-    }
     section#home ul.home__game-list li{
         font-size: 2.25rem;
     }
